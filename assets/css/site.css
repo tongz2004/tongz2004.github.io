@@ -1,0 +1,501 @@
+/* Site-local presentation layer for tongz2004.github.io.
+   Loaded after the al_folio_core stylesheets; only overrides tokens and adds
+   a few content components. No gem-owned file is shadowed. */
+
+:root {
+  --global-theme-color: #006668;
+  --global-hover-color: #006668;
+  --site-muted: #4d626c;
+  --site-tint: rgba(0, 102, 104, 0.06);
+  --site-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --site-sans: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --site-measure: 68ch;
+}
+
+html[data-theme="dark"] {
+  --global-theme-color: #6fd0ca;
+  --global-hover-color: #6fd0ca;
+  --site-muted: #a9b8be;
+  --site-tint: rgba(111, 208, 202, 0.08);
+}
+
+body {
+  font-family: var(--site-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Page header ---------- */
+
+.post .post-header {
+  margin-bottom: 2rem;
+}
+
+.post .post-header .post-title {
+  font-family: var(--site-serif);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 6vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.6rem;
+}
+
+.post .post-header .post-title .font-weight-bold {
+  font-weight: 600;
+}
+
+.post .post-header .desc,
+.post .post-header .post-description {
+  color: var(--site-muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  max-width: var(--site-measure);
+  margin-bottom: 0;
+}
+
+/* ---------- Prose ---------- */
+
+.post article > p,
+.post article > ul,
+.post article > ol,
+.post article > .clearfix > p,
+.post article > .clearfix > ul {
+  max-width: var(--site-measure);
+}
+
+.post article h2 {
+  font-family: var(--site-serif);
+  font-weight: 600;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.post article h3 {
+  font-family: var(--site-sans);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  margin: 0 0 0.3rem;
+}
+
+.post article a {
+  text-underline-offset: 0.2em;
+}
+
+.post article strong {
+  font-weight: 700;
+}
+
+.post article a span {
+  color: inherit;
+}
+
+.post article a:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.post article .lead-intro {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 62ch;
+  margin-bottom: 1.25rem;
+}
+
+.post article .kicker {
+  color: var(--site-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  margin: 0 0 0.4rem;
+}
+
+.post article .tag {
+  display: inline-block;
+  color: var(--global-theme-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+}
+
+.post article .more {
+  font-weight: 600;
+  margin: 0.9rem 0 0;
+}
+
+/* ---------- Contact ---------- */
+
+.post article .contact-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+}
+
+.contact-line a {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Featured project ---------- */
+
+.feature {
+  background: var(--site-tint);
+  border-left: 3px solid var(--global-theme-color);
+  border-radius: 0 6px 6px 0;
+  padding: 1.5rem 1.6rem 1.6rem;
+}
+
+.post article .feature .feature-title {
+  font-family: var(--site-serif);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  border: 0;
+}
+
+.feature .feature-title a {
+  color: var(--global-text-color);
+  text-decoration: none;
+}
+
+.feature .feature-title a:hover {
+  color: var(--global-theme-color);
+  text-decoration: underline;
+}
+
+.feature p {
+  max-width: 64ch;
+}
+
+.post article .feature > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Definition-style briefs (studies / contribution) ---------- */
+
+.brief {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0.45rem 1.25rem;
+  margin: 0.9rem 0 0;
+  max-width: 46rem;
+}
+
+.brief dt {
+  color: var(--site-muted);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-top: 0.22rem;
+}
+
+.brief dd {
+  margin: 0;
+}
+
+/* ---------- Experience list (home) ---------- */
+
+.post article .exp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 46rem;
+}
+
+.exp-list > li {
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.exp-list > li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.exp-list p {
+  margin: 0;
+}
+
+/* ---------- Research index ---------- */
+
+.research-list {
+  margin-top: 0.5rem;
+}
+
+.research-item {
+  padding: 1.9rem 0;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.post article .research-item h2 {
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.research-item h2 a {
+  color: var(--global-text-color);
+  text-decoration: none;
+}
+
+.research-item h2 a:hover {
+  color: var(--global-theme-color);
+  text-decoration: underline;
+}
+
+.research-item--lead {
+  background: var(--site-tint);
+  border-top: 0;
+  border-left: 3px solid var(--global-theme-color);
+  border-radius: 0 6px 6px 0;
+  padding: 1.6rem 1.6rem 1.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.post article .research-item--lead h2 {
+  font-size: 1.85rem;
+  line-height: 1.15;
+}
+
+.research-item--lead + .research-item {
+  border-top: 0;
+}
+
+/* ---------- Project detail ---------- */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1rem 1.75rem;
+  margin: 0 0 2.25rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--global-divider-color);
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.post article .facts + h2 {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.facts dt {
+  color: var(--site-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.facts dd {
+  margin: 0.15rem 0 0;
+  line-height: 1.45;
+}
+
+.post article .work-list {
+  padding-left: 1.15rem;
+  max-width: var(--site-measure);
+}
+
+.work-list > li {
+  margin-bottom: 0.6rem;
+  padding-left: 0.2rem;
+}
+
+.work-list > li::marker {
+  color: var(--global-theme-color);
+}
+
+.post article .status-note {
+  color: var(--site-muted);
+  font-size: 0.95rem;
+}
+
+.post article .back-link {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--global-divider-color);
+  font-weight: 600;
+  max-width: none;
+}
+
+/* ---------- Schematic (HTML block diagram, illustrative) ---------- */
+
+.schematic {
+  margin: 1.75rem 0 0;
+}
+
+.post article .chain {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chain > li {
+  position: relative;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  padding: 1rem 1.1rem 1.1rem;
+  background: var(--global-card-bg-color);
+}
+
+.chain > li + li::before {
+  content: "\2192";
+  position: absolute;
+  left: -1.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--global-theme-color);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.post article .chain .stage {
+  color: var(--global-theme-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.chain ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.chain ul li + li {
+  margin-top: 0.4rem;
+}
+
+.chain .pending {
+  border: 1px dashed var(--site-muted);
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
+}
+
+.chain .pending em {
+  color: var(--site-muted);
+  font-size: 0.85rem;
+}
+
+.schematic figcaption {
+  color: var(--site-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-top: 0.9rem;
+  max-width: var(--site-measure);
+}
+
+/* ---------- Education ---------- */
+
+.post article .edu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 46rem;
+}
+
+.edu-list li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.1rem 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.edu-list .where {
+  font-weight: 700;
+}
+
+.edu-list .what {
+  color: var(--site-muted);
+}
+
+/* ---------- Footer ---------- */
+
+footer.sticky-bottom {
+  font-size: 0.85rem;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .post article .lead-intro {
+    font-size: 1.1rem;
+  }
+
+  .post article h2 {
+    margin-top: 2.4rem;
+  }
+
+  .feature,
+  .research-item--lead {
+    padding: 1.2rem 1.1rem 1.3rem;
+  }
+
+  .post article .research-item--lead h2,
+  .post article .feature .feature-title {
+    font-size: 1.45rem;
+  }
+
+  .brief {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+
+  .brief dd {
+    margin-bottom: 0.7rem;
+  }
+
+  .brief dd:last-child {
+    margin-bottom: 0;
+  }
+
+  .post article .chain {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .chain > li + li::before {
+    content: "\2193";
+    left: 50%;
+    top: -1.5rem;
+    transform: translateX(-50%);
+  }
+}
+
+@media print {
+  .feature,
+  .research-item--lead {
+    background: none;
+  }
+}
