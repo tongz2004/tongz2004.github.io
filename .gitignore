@@ -8,7 +8,8 @@ _site
 .sass-cache
 .tweet-cache
 .venv
-assets/libs/
+assets/libs/*
+!assets/libs/webfonts/
 assets/rendercv/rendercv_output/*.typ
 al-folio-upgrade-report.md
 node_modules/
